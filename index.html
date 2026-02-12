@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Benni 💘</title>
+  <style>
+    :root{
+      --bg1:#ff9ecf;
+      --bg2:#ffc3a0;
+      --card: rgba(255,255,255,.16);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.75);
+      --accent:#ff2e63;
+      --accent2:#ff4d88;
+      --shadow: 0 18px 60px rgba(0,0,0,.18);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(255,255,255,.25), transparent 50%),
+                  radial-gradient(900px 700px at 80% 80%, rgba(255,255,255,.20), transparent 55%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
+
+    /* Decorative floating hearts */
+    .floaters{
+      position:fixed; inset:0; pointer-events:none; opacity:.25;
+      filter: blur(.2px);
+    }
+    .floater{
+      position:absolute; font-size:24px;
+      animation: drift 10s linear infinite;
+    }
+    @keyframes drift{
+      from{ transform: translateY(110vh) translateX(0) rotate(0deg); }
+      to  { transform: translateY(-20vh) translateX(40px) rotate(25deg); }
+    }
+
+    .wrap{
+      position:relative;
+      width:min(980px, 92vw);
+      margin: 0 auto;
+      padding: 28px 0 40px;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .layout{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+
+    @media (max-width: 860px){
+      body{ overflow:auto; }
+      .wrap{ height:auto; padding:24px 0 40px; }
+      .layout{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing:.2px;
+    }
+
+    .title{
+      margin: 14px 0 8px;
+      font-size: clamp(30px, 3.3vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+    }
+    .subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.5;
+      max-width: 60ch;
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.18);
+      margin: 16px 0;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 520px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    .mini{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.07);
+    }
+    .mini h3{
+      margin:0 0 6px;
+      font-size: 14px;
+      color: rgba(255,255,255,.92);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .mini p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    /* Inputs */
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    label{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .inputRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    input{
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.12);
+      color: var(--text);
+      outline:none;
+      font-size: 15px;
+    }
+    input::placeholder{ color: rgba(255,255,255,.65); }
+
+    .btn{
+      border: none;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 800;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 30px rgba(255,46,99,.28);
+      transition: transform .15s ease, filter .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .ghost{
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: none;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .error{
+      margin: 10px 0 0;
+      color: rgba(255,255,255,.9);
+      font-size: 13.5px;
+      min-height: 18px;
+    }
+
+    /* Main Valentine page */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .who{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .bigQuestion{
+      margin: 10px 0 6px;
+      font-size: clamp(34px, 3.8vw, 52px);
+      letter-spacing:-1px;
+      line-height: 1.02;
+    }
+    .bigQuestion span{
+      display:inline-block;
+      padding: 0 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.20);
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 14px;
+    }
+
+    .yes{
+      font-size: 28px;
+      padding: 16px 26px;
+      border-radius: 18px;
+    }
+
+    /* NO button is tiny and escapes */
+    .no{
+      position: absolute;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      cursor: pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .playground{
+      position:relative;
+      min-height: 220px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,.28);
+      background: rgba(0,0,0,.06);
+      overflow:hidden;
+      margin-top: 14px;
+      padding: 16px;
+    }
+
+    .footerNote{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height:1.4;
+    }
+
+    /* Success screen */
+    .success{
+      text-align:center;
+      padding: 26px;
+    }
+    .success h1{
+      margin: 0 0 10px;
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing:-1px;
+      line-height:1.05;
+    }
+    .success p{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floaters" aria-hidden="true" id="floaters"></div>
+
+  <div class="wrap">
+    <!-- LOGIN (password visible while typing) -->
+    <div class="layout" id="loginView">
+      <section class="card">
+        <div class="badge">🔒 Accesso riservato ed esclusivo</div>
+        <h1 class="title">ei.... Benni… ho una domanda.... 💘</h1>
+        <p class="subtitle">
+          Prima però: inserisci la password segreta.
+          (Sì: <b>si vede mentre scrivi</b> 😌)
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Hint</h3>
+            <p>Usa qualcosa che solo voi sapete: una data, un soprannome, un posto.</p>
+          </div>
+          <div class="mini">
+            <h3>Regola</h3>
+            <p>Se sbagli… niente panico. Ritenta. Ma senza barare 😇</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pw">Password (visibile)</label>
+          <div class="inputRow">
+            <!-- type="text" = visibile -->
+            <input id="pw" type="text" inputmode="text" autocomplete="off"
+                   placeholder="Scrivi qui la password…" />
+            <button class="btn" id="enterBtn">Entra 💌</button>
+          </div>
+          <p class="error" id="err"></p>
+        </div>
+
+        <p class="footerNote">Tip: premi anche <b>Invio</b> sulla tastiera.</p>
+      </section>
+
+      <aside class="card">
+        <div class="badge">✨ Mini preview</div>
+        <h2 class="title" style="font-size:28px; margin-top:12px;">Cosa c’è dentro?</h2>
+        <p class="subtitle" style="max-width:none;">
+          Una pagina “valentine” completa: messaggio, bottoni, e un <b>NO</b> che fa il furbo e scappa.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="mini">
+          <h3>Nota carina</h3>
+          <p>Se vuoi, dopo il “YES” posso farti apparire cuoricini o un messaggio personalizzato.</p>
+        </div>
+
+        <p class="footerNote">PS: questo layout è fatto per sembrare un vero mini-sito, non una pagina vuota 🙂</p>
+      </aside>
+    </div>
+
+    <!-- MAIN -->
+    <div class="layout" id="mainView" style="display:none;">
+      <section class="card">
+        <div class="topbar">
+          <div>
+            <div class="badge">💞 Private Valentine Page</div>
+            <div class="who">Destinataria: <b>Benni</b></div>
+          </div>
+          <button class="btn ghost" id="logoutBtn" title="Torna alla password">🔒</button>
+        </div>
+
+        <h1 class="bigQuestion">Benni, <span>will u be my Valentine?</span></h1>
+        <p class="subtitle">
+          Prometto: cena, coccole e film!!!.  
+          (E no, il tasto “no” non collabora.)
+        </p>
+
+        <div class="ctaRow">
+          <button class="btn yes" id="yesBtn">YES 💖</button>
+          <span class="badge" id="status">🕹️ Prova a cliccare “no”…</span>
+        </div>
+
+        <div class="playground" id="playground">
+          <div class="mini" style="max-width:520px;">
+            <h3>Missione</h3>
+            <p>
+              Clicca <b>YES</b> per accettare.  
+              Se provi il <b>no</b>… lui scappa. 😈
+            </p>
+          </div>
+
+          <button class="no" id="noBtn">no</button>
+        </div>
+
+        <p class="footerNote">
+          Made with ❤️ for Benni. (Se stai leggendo questo: vedi di premere YES.)
+        </p>
+      </section>
+
+      <aside class="card" id="sideCard">
+        <div class="badge">💌 Message</div>
+        <h2 class="title" style="font-size:28px; margin-top:12px;">Una cosa seria:</h2>
+        <p class="subtitle" style="max-width:none;">
+          Mi innamoro di te ogni giorno di piu!!!
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Opzione A</h3>
+            <p>Cena + film + coccole (classic but elite).</p>
+          </div>
+          <div class="mini">
+            <h3>Opzione B</h3>
+            <p>Cena + playlist + vibes (cozy mode).</p>
+          </div>
+        </div>
+
+        <p class="footerNote">Se vuoi cambiare testo o stile (più elegante / più meme), dimmelo e te lo sistemo.</p>
+      </aside>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="layout" id="successView" style="display:none;">
+      <section class="card success" style="grid-column: 1 / -1;">
+        <div class="badge">✅ Accepted</div>
+        <h1> SIIII Amore ❤️ It’s a date!!!</h1>
+        <p>
+          Ok ora è ufficiale.  😌
+        </p>
+        <div class="ctaRow" style="justify-content:center; margin-top:18px;">
+          <button class="btn" onclick="location.reload()">Rigioca 🔁</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // ====== CONFIG ======
+    const PASSWORD = "21/11/2024"; // <-- CAMBIA QUI (es: "1402" o "milano" ecc.)
+
+    // ====== FLOATING HEARTS ======
+    const floaters = document.getElementById("floaters");
+    const hearts = ["💗","💖","💘","💝","💕"];
+    for(let i=0;i<14;i++){
+      const s = document.createElement("div");
+      s.className = "floater";
+      s.textContent = hearts[i % hearts.length];
+      s.style.left = Math.random()*100 + "vw";
+      s.style.animationDuration = (8 + Math.random()*8) + "s";
+      s.style.fontSize = (18 + Math.random()*18) + "px";
+      s.style.animationDelay = (-Math.random()*10) + "s";
+      floaters.appendChild(s);
+    }
+
+    // ====== VIEWS ======
+    const loginView = document.getElementById("loginView");
+    const mainView = document.getElementById("mainView");
+    const successView = document.getElementById("successView");
+
+    const pwInput = document.getElementById("pw");
+    const enterBtn = document.getElementById("enterBtn");
+    const err = document.getElementById("err");
+
+    function show(view){
+      loginView.style.display = "none";
+      mainView.style.display = "none";
+      successView.style.display = "none";
+      view.style.display = "";
+      if(view === loginView) pwInput.focus();
+    }
+
+    function checkPassword(){
+      const v = (pwInput.value || "").trim();
+      if(v === PASSWORD){
+        err.textContent = "";
+        show(mainView);
+        placeNoRandom();
+      } else {
+        err.textContent = "Password sbagliata 😢 riprova";
+      }
+    }
+
+    enterBtn.addEventListener("click", checkPassword);
+    pwInput.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") checkPassword();
+    });
+
+    // Logout (torna al login)
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      pwInput.value = "";
+      err.textContent = "";
+      show(loginView);
+    });
+
+    // ====== MAIN INTERACTIONS ======
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const playground = document.getElementById("playground");
+    const status = document.getElementById("status");
+
+    yesBtn.addEventListener("click", () => {
+      show(successView);
+    });
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function placeNoRandom(){
+      const rect = playground.getBoundingClientRect();
+      const bw = noBtn.offsetWidth;
+      const bh = noBtn.offsetHeight;
+
+      // Keep within playground area
+      const x = Math.random() * (rect.width - bw - 12) + 6;
+      const y = Math.random() * (rect.height - bh - 12) + 6;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function flee(){
+      status.textContent = "😈 nope.";
+      placeNoRandom();
+    }
+
+    // Desktop hover
+    noBtn.addEventListener("mouseover", flee);
+
+    // Mobile tap (touchstart)
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      flee();
+    }, {passive:false});
+
+    // Also flee if user gets close with mouse (extra evil)
+    playground.addEventListener("mousemove", (e) => {
+      const b = noBtn.getBoundingClientRect();
+      const dx = e.clientX - (b.left + b.width/2);
+      const dy = e.clientY - (b.top + b.height/2);
+      const dist = Math.hypot(dx, dy);
+      if(dist < 90) placeNoRandom();
+    });
+
+    // Start on login
+    show(loginView);
+  </script>
+</body>
+</html>
