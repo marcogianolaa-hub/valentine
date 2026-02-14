@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recap 💗</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-hearts" aria-hidden="true"></div>
+
+  <main class="stage">
+    <section class="card glass">
+      <div class="pill">
+        <span class="lock">💞</span>
+        <span>Valentine mode: ON</span>
+      </div>
+
+      <h1 class="hero">recap della serata <span class="emoji">✨</span></h1>
+      <p class="sub">Solo per noi due.</p>
+
+      <div class="divider"></div>
+
+      <div class="timeline glass-soft">
+        <div class="t-item">
+          <div class="dot"></div>
+          <div class="t-text">
+            <div class="t-title">Cena</div>
+            <div class="t-desc">da Guido · Vizio Italiano 🍝</div>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="dot"></div>
+          <div class="t-text">
+            <div class="t-title">Car drive</div>
+            <div class="t-desc">musica + chiacchiere + swag 🚗</div>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="dot"></div>
+          <div class="t-text">
+            <div class="t-title">Film</div>
+            <div class="t-desc">sotto una coperta 🎬</div>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="dot"></div>
+          <div class="t-text">
+            <div class="t-title">Coccole</div>
+            <div class="t-desc">tante, tantissime </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button class="btn solid wide" type="button" id="restartBtn">Ricomincia 💗</button>
+      <p class="micro centerish">ti amo più di ieri (e meno di domani)</p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("restartBtn").addEventListener("click", () => {
+      document.body.classList.add("fade-out");
+      setTimeout(() => (window.location.href = "./index.html"), 380);
+    });
+  </script>
+</body>
+</html>
