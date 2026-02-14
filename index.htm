@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Private access · for Benni only</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-hearts" aria-hidden="true"></div>
+
+  <main class="stage">
+    <section class="card glass">
+      <div class="pill">
+        <span class="lock">🔒</span>
+        <span>Private access · for Benni only</span>
+      </div>
+
+      <h1 class="hero">
+        ho preparato una piccola<br/>sorpresa <span class="emoji">💘</span>
+      </h1>
+
+      <p class="sub">
+        Sblocca la pagina componendo la password. È una data.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="builder">
+          <div class="builder-label">Password builder</div>
+          <div class="builder-display" id="display" aria-live="polite">
+            <span class="slot" id="s1">__</span><span class="sep">/</span>
+            <span class="slot" id="s2">__</span><span class="sep">/</span>
+            <span class="slot" id="s3">__</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost" id="resetBtn" type="button">Reset</button>
+          <button class="btn solid" id="enterBtn" type="button">
+            Enter <span class="chev">›</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="hint">
+        Suggerimento: i numeri sono “sparsi” qui sotto
+      </p>
+
+      <div class="numbers-area glass-soft" id="numbersArea" role="group" aria-label="Numeri sparsi">
+        <!-- i “bubbles” vengono posizionati via CSS per restare come nello screenshot -->
+        <button class="bubble" data-val="21" style="--x: 12%; --y: 24%;">21</button>
+        <button class="bubble" data-val="11" style="--x: 72%; --y: 32%;">11</button>
+        <button class="bubble" data-val="23" style="--x: 32%; --y: 74%;">23</button>
+        <button class="bubble" data-val="24" style="--x: 56%; --y: 62%;">24</button>
+        <!-- extra “decoy” per renderlo più carino (non necessari) -->
+        <button class="bubble dim" data-val="07" style="--x: 85%; --y: 72%;">07</button>
+        <button class="bubble dim" data-val="14" style="--x: 18%; --y: 56%;">14</button>
+      </div>
+
+      <p class="error" id="error" hidden>Ops… non è quella giusta. Riprova 💗</p>
+    </section>
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+</html>
